@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Sign Up</h2>
+    <form method="post" th:action="@{/register}" th:object="${user}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" th:field="*{email}" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" th:field="*{password}" placeholder="Password" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="contact" name="contact" th:field="*{contact}" placeholder="Contact Number">
+        </div>
+        <div class="form-group form-button">
+            <input type="submit" class="btn btn-primary" value="Register">
+        </div>
+    </form>
+</div>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    var status = /*[[${status}]]*/ ''; // This syntax is correct for embedding Thymeleaf variables in JavaScript
+    if (status === 'success') {
+        swal("Success!", "Your account has been created.", "success");
+    }
+</script>
+
+</body>
+</html>
